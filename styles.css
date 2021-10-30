@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    outline: none;
+    
+    
 }
 html{
     font-size: 62.5%;
@@ -62,6 +65,7 @@ button{
     outline: none;
     padding: 1rem 1.8rem;
     box-shadow: 2px 6px .1rem rgb(0, 0, 0,.65);
+    -webkit-tap-highlight-color: transparent;
 
     
 }
@@ -77,10 +81,10 @@ button:active{
     box-shadow: 2px 6px .1rem rgb(0, 0, 0,.65);
 }
 
-
 .twitter-button:hover{
     color: #38a1f3;
-}
+} 
+
 .fa-twitter{
     font-size: 2rem;
 }
@@ -89,6 +93,7 @@ button:active{
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    
 }
 
 /*MEDIA QUERY*/
