@@ -1,5 +1,4 @@
 //get elements
-
 const quoteContainer = document.querySelector('#quote-container');
 const quoteText = document.querySelector('#quote');
 const authorText = document.querySelector('#author');
@@ -12,8 +11,19 @@ let apiQuotes = [];
 // extract a single quote
 function getQuote(){
     const quote = apiQuotes[Math.floor(Math.random()* apiQuotes.length) ];
+    //IF AUTHOR NAME IS NOT KNOWN
+    if(!quote.author){
+        authorText.innerHTML = 'Unknown';
+    }else{
+        authorText.innerHTML = quote.author;
+    }
+
+    if(quote.text.length > 120){
+        quoteText.classList.add('long-quote');
+    }else{
+        quoteText.classList.remove('long-quote');
+    }
     quoteText.innerHTML = quote.text;
-    authorText.innerHTML = quote.author;
     
 }
 // Fetch a collection of quotes from API
@@ -33,6 +43,17 @@ async function getQuotes(){
 
 getQuotes();
 
+function tweetQuote(){
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
+    window.open(twitterUrl, '_blank');
+}
+
+
 newQuoteButton.addEventListener('click', ()=>{
     getQuotes();
 })
+
+twitterBtn.addEventListener('click', ()=>{
+    tweetQuote();
+})
+
